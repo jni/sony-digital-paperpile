@@ -91,7 +91,7 @@ def new_paperpile_to_box(path_to_file_in_paperpile, db, *,
     if not dry_run:
         shutil.copy2(original_path, new_path)
         db.insert({'paperpile': original_path, 'box': new_path,
-                   'modtime': entry.stat().st_mtime})
+                   'modtime': os.stat(original_path).st_mtime})
 
 
 def sync_existing(dry_run=True, verbose=True):
