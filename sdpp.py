@@ -219,8 +219,10 @@ def watch(dry_run=True, verbose=True):
     obs = observers.Observer()
     mod = FileModifiedHandler(dry_run=dry_run, verbose=verbose)
     new = NewFileHandler(dry_run=dry_run, verbose=verbose)
+    mov = MovedFileHandler(dry_run=dry_run, verbose=verbose)
     obs.schedule(mod, SONY_BOX, recursive=True)
     obs.schedule(new, PAPERPILE, recursive=True)
+    obs.schedule(mov, PAPERPILE, recursive=True)
     obs.start()
     try:
         while True:
