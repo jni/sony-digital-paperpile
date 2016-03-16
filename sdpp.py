@@ -209,6 +209,7 @@ class MovedFileHandler(events.FileSystemEventHandler):
         elem = self.db.search(q.box == box_old)
         elem['box'] = box_new
         elem['modtime'] = os.stat(box_new).st_mtime
+        elem['paperpile'] = dest
 
 
 def watch(dry_run=True, verbose=True):
